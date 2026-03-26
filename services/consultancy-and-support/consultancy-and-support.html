@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultancy &amp; Support - WVTSOL</title>
+    <meta name="description" content="Expert technology consultancy and ongoing support services for your business">
+    <link rel="shortcut icon" href="/res/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>(function(){ emailjs.init({ publicKey: "8OTNF3sS8yMDX-oKb" }); })();</script>
+    <style>
+        :root {
+            --primary: #2c3e50; --primary-dark: #1a2530; --secondary: #e74c3c;
+            --light: #f8f9fa; --light-gray: #e9ecef; --white: #ffffff;
+            --success: #28a745; --danger: #dc3545;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1); --transition: all 0.3s ease;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; color:var(--light); line-height:1.6; overflow-x:hidden; background:var(--primary-dark); }
+        h1,h2,h3,h4,h5 { font-family:'Syne',sans-serif; }
+        a { text-decoration:none; color:inherit; }
+        ul { list-style:none; }
+        .container { width:100%; max-width:1200px; margin:0 auto; padding:0 20px; }
+        .btn { display:inline-block; padding:12px 28px; background:var(--secondary); color:var(--white); border:none; border-radius:6px; font-family:'Syne',sans-serif; font-weight:600; font-size:0.95rem; cursor:pointer; transition:var(--transition); text-align:center; letter-spacing:0.02em; }
+        .btn:hover { background:#c0392b; transform:translateY(-3px); box-shadow:0 8px 25px rgba(231,76,60,0.35); }
+        .btn-outline { background:transparent; border:2px solid var(--secondary); color:var(--secondary); }
+        .btn-outline:hover { background:var(--secondary); color:var(--white); }
+        .section { padding:90px 0; }
+        .section-title { text-align:center; margin-bottom:55px; }
+        .section-title h2 { font-size:2.6rem; margin-bottom:15px; position:relative; display:inline-block; letter-spacing:-0.02em; }
+        .section-title h2::after { content:''; position:absolute; bottom:-12px; left:50%; transform:translateX(-50%); width:60px; height:3px; background:linear-gradient(90deg,var(--secondary),#ff6b5b); border-radius:2px; }
+        .section-title p { color:var(--light-gray); max-width:650px; margin:22px auto 0; opacity:0.8; font-size:0.97rem; }
+
+        /* HEADER */
+        header { position:fixed; top:0; left:0; width:100%; z-index:1000; background:rgba(26,37,48,0.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(255,255,255,0.05); transition:var(--transition); }
+        header.scrolled { box-shadow:0 4px 24px rgba(0,0,0,0.3); }
+        .header-container { display:flex; justify-content:space-between; align-items:center; padding:16px 0; }
+        .logo { display:flex; align-items:center; }
+        .logo img { height:38px; }
+        .nav-menu { display:flex; align-items:center; }
+        .nav-list { display:flex; margin-right:30px; gap:4px; }
+        .nav-link { font-family:'Syne',sans-serif; font-weight:500; font-size:0.9rem; padding:6px 13px; border-radius:6px; transition:var(--transition); letter-spacing:0.01em; }
+        .nav-link:hover { color:var(--secondary); background:rgba(231,76,60,0.08); }
+        .header-contact { display:flex; align-items:center; gap:16px; }
+        .header-contact-item { display:flex; align-items:center; gap:7px; font-size:0.85rem; }
+        .header-contact-icon { color:var(--secondary); }
+        .mobile-toggle { display:none; font-size:1.4rem; cursor:pointer; padding:6px 8px; border-radius:6px; transition:var(--transition); }
+        .mobile-toggle:hover { background:rgba(255,255,255,0.08); }
+
+        /* SERVICE HERO */
+        .service-hero { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); padding:140px 0 80px; text-align:center; position:relative; overflow:hidden; }
+        .service-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(231,76,60,0.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(52,152,219,0.1) 0%,transparent 55%); }
+        .service-hero-content { position:relative; z-index:1; max-width:750px; margin:0 auto; }
+        .service-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(231,76,60,0.14); border:1px solid rgba(231,76,60,0.28); color:#ff9a90; padding:6px 18px; border-radius:50px; font-size:0.8rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:24px; }
+        .service-hero h1 { font-size:clamp(2.2rem,4.5vw,3.4rem); font-weight:800; margin-bottom:18px; letter-spacing:-0.03em; line-height:1.15; }
+        .service-hero p { font-size:1.1rem; color:var(--light-gray); margin-bottom:32px; opacity:0.82; }
+        .breadcrumb { display:flex; align-items:center; justify-content:center; gap:8px; font-size:0.85rem; opacity:0.55; margin-bottom:20px; }
+        .breadcrumb a:hover { color:var(--secondary); opacity:1; }
+
+        /* SERVICE DETAIL */
+        .service-detail { padding:90px 0; background:var(--primary); }
+        .service-detail-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:flex-start; }
+        .service-info h2 { font-size:2.1rem; margin-bottom:18px; letter-spacing:-0.02em; line-height:1.2; }
+        .service-info p { margin-bottom:14px; color:var(--light-gray); opacity:0.82; font-size:0.93rem; line-height:1.75; }
+        .service-features { margin-top:30px; display:flex; flex-direction:column; gap:18px; }
+        .feature-item { display:flex; align-items:flex-start; gap:14px; }
+        .feature-icon { width:42px; height:42px; min-width:42px; background:rgba(231,76,60,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:1rem; }
+        .feature-text h4 { margin-bottom:3px; color:var(--white); font-size:0.93rem; }
+        .feature-text p { color:var(--light-gray); font-size:0.86rem; margin-bottom:0; opacity:0.72; }
+        .service-image img { width:100%; border-radius:14px; box-shadow:0 20px 50px rgba(0,0,0,0.3); }
+
+        /* SUPPORT TIERS */
+        .support-tiers { margin-top:70px; }
+        .tiers-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:22px; margin-top:40px; }
+        .tier-card { background:var(--primary-dark); border-radius:14px; padding:38px 28px; text-align:center; transition:var(--transition); box-shadow:var(--shadow); border:1px solid rgba(255,255,255,0.04); position:relative; overflow:hidden; }
+        .tier-card:hover { transform:translateY(-8px); border-color:rgba(231,76,60,0.2); box-shadow:0 22px 45px rgba(0,0,0,0.25); }
+        .tier-card.popular { border-color:rgba(231,76,60,0.3); }
+        .tier-card.popular::before { content:'Most Popular'; position:absolute; top:18px; right:-32px; background:var(--secondary); color:white; padding:5px 45px; font-size:0.75rem; font-family:'Syne',sans-serif; font-weight:600; transform:rotate(45deg); letter-spacing:0.04em; }
+        .tier-icon { font-size:2.2rem; color:var(--secondary); margin-bottom:18px; }
+        .tier-title { font-size:1.3rem; margin-bottom:12px; color:var(--white); }
+        .tier-price { font-size:2rem; font-family:'Syne',sans-serif; font-weight:800; margin-bottom:22px; color:var(--secondary); }
+        .tier-price span { font-size:0.9rem; color:var(--light-gray); font-weight:400; opacity:0.7; }
+        .tier-features { margin-bottom:28px; display:flex; flex-direction:column; gap:10px; }
+        .tier-feature { color:var(--light-gray); font-size:0.88rem; display:flex; align-items:center; justify-content:center; gap:9px; opacity:0.8; }
+        .tier-feature .fa-check { color:var(--secondary); }
+        .tier-feature .fa-times { color:rgba(255,255,255,0.2); }
+
+        /* PROCESS */
+        .process-section { margin-top:70px; }
+        .process-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-top:40px; }
+        .process-step { text-align:center; padding:32px 24px; background:var(--primary-dark); border-radius:14px; box-shadow:var(--shadow); transition:var(--transition); border:1px solid rgba(255,255,255,0.04); }
+        .process-step:hover { transform:translateY(-6px); border-color:rgba(231,76,60,0.18); }
+        .step-number { display:flex; align-items:center; justify-content:center; width:48px; height:48px; background:var(--secondary); color:var(--white); border-radius:50%; font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin:0 auto 18px; box-shadow:0 4px 14px rgba(231,76,60,0.35); }
+        .step-title { font-size:1.1rem; margin-bottom:12px; color:var(--white); }
+        .step-desc { color:var(--light-gray); font-size:0.88rem; opacity:0.75; line-height:1.7; }
+
+        /* BOOKING */
+        .booking-section { padding:90px 0; background:var(--primary-dark); }
+        .booking-container { display:grid; grid-template-columns:1fr 1.3fr; gap:55px; align-items:start; }
+        .booking-info h2 { font-size:2.1rem; margin-bottom:16px; letter-spacing:-0.02em; }
+        .booking-info > p { margin-bottom:14px; color:var(--light-gray); opacity:0.8; font-size:0.93rem; line-height:1.75; }
+        .benefits-list { margin-top:24px; display:flex; flex-direction:column; gap:12px; }
+        .benefit-item { display:flex; align-items:center; gap:12px; font-size:0.92rem; color:var(--light-gray); }
+        .benefit-item i { color:var(--secondary); font-size:0.95rem; width:16px; }
+        .booking-form { background:var(--primary); padding:38px; border-radius:14px; box-shadow:0 12px 45px rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.05); }
+        .booking-form h3 { font-size:1.4rem; margin-bottom:5px; letter-spacing:-0.02em; }
+        .form-subtitle { font-size:0.85rem; color:var(--light-gray); opacity:0.65; margin-bottom:26px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .form-group { margin-bottom:18px; }
+        .form-label { display:block; margin-bottom:7px; font-size:0.82rem; font-weight:500; color:var(--light-gray); opacity:0.82; letter-spacing:0.02em; }
+        .form-control { width:100%; padding:11px 14px; border:1px solid rgba(255,255,255,0.09); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.92rem; transition:var(--transition); background:rgba(255,255,255,0.04); color:var(--white); }
+        .form-control::placeholder { color:rgba(255,255,255,0.22); }
+        .form-control:focus { border-color:rgba(231,76,60,0.45); outline:none; background:rgba(255,255,255,0.06); box-shadow:0 0 0 3px rgba(231,76,60,0.1); }
+        textarea.form-control { min-height:115px; resize:vertical; }
+        select.form-control { appearance:none; background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e74c3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat:no-repeat; background-position:right 14px center; background-size:15px; }
+        select.form-control option { background:var(--primary); }
+        .btn-submit { width:100%; position:relative; overflow:hidden; }
+        .btn-submit .btn-text { display:inline; }
+        .btn-submit .btn-loading { display:none; position:absolute; inset:0; align-items:center; justify-content:center; gap:8px; }
+        .btn-submit.loading .btn-text { visibility:hidden; }
+        .btn-submit.loading .btn-loading { display:flex; }
+        .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        /* FOOTER */
+        footer { background:#111d27; color:var(--white); padding:65px 0 24px; border-top:1px solid rgba(255,255,255,0.05); }
+        .footer-container { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:40px; margin-bottom:45px; }
+        .footer-col h3 { font-size:0.98rem; margin-bottom:20px; position:relative; padding-bottom:12px; color:var(--white); letter-spacing:0.02em; }
+        .footer-col h3::after { content:''; position:absolute; bottom:0; left:0; width:30px; height:2px; background:var(--secondary); border-radius:2px; }
+        .footer-col > p { color:var(--light-gray); opacity:0.55; font-size:0.87rem; line-height:1.72; }
+        .footer-links li { margin-bottom:9px; }
+        .footer-links a { color:var(--light-gray); opacity:0.6; font-size:0.87rem; transition:var(--transition); }
+        .footer-links a:hover { color:var(--secondary); opacity:1; padding-left:4px; }
+        .footer-links li:not(:has(a)) { color:var(--light-gray); opacity:0.6; font-size:0.87rem; }
+        .footer-social { display:flex; gap:9px; margin-top:20px; }
+        .social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; background:rgba(255,255,255,0.07); border-radius:8px; transition:var(--transition); font-size:0.82rem; }
+        .social-icon:hover { background:var(--secondary); transform:translateY(-3px); }
+        .footer-bottom { text-align:center; padding-top:22px; border-top:1px solid rgba(255,255,255,0.06); color:var(--light-gray); opacity:0.4; font-size:0.82rem; }
+        .toast { position:fixed; top:88px; right:22px; padding:13px 18px; border-radius:10px; color:var(--white); z-index:9999; opacity:0; transform:translateX(115%); transition:opacity 0.35s,transform 0.4s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 8px 30px rgba(0,0,0,0.25); font-size:0.9rem; max-width:340px; display:flex; align-items:center; gap:10px; }
+        .toast.show { opacity:1; transform:translateX(0); }
+        .toast.success { background:linear-gradient(135deg,#1a6e38,#28a745); }
+        .toast.error   { background:linear-gradient(135deg,#911a1a,#dc3545); }
+        .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.6s ease,transform 0.6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:992px) {
+            .service-detail-content, .booking-container { grid-template-columns:1fr; }
+            .tiers-container { grid-template-columns:1fr; }
+            .footer-container { grid-template-columns:1fr 1fr; }
+            .nav-list { position:fixed; top:70px; left:-100%; width:100%; height:calc(100vh - 70px); background:rgba(15,24,32,0.98); backdrop-filter:blur(20px); flex-direction:column; align-items:center; justify-content:center; transition:var(--transition); z-index:999; gap:12px; margin-right:0; }
+            .nav-list.active { left:0; }
+            .nav-link { font-size:1.1rem; padding:10px 20px; }
+            .mobile-toggle { display:block; }
+            .header-contact { display:none; }
+        }
+        @media(max-width:768px) {
+            .section, .service-detail, .booking-section { padding:65px 0; }
+            .service-hero { padding:120px 0 65px; }
+            .process-steps { grid-template-columns:1fr; }
+            .form-row { grid-template-columns:1fr; }
+            .booking-form { padding:26px; }
+        }
+        @media(max-width:576px) {
+            .logo img { height:32px; }
+            .footer-container { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="container header-container">
+        <a href="/" class="logo"><img src="/res/logo.png" alt="WVTSOL"></a>
+        <div class="nav-menu">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#services" class="nav-link">Services</a></li>
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="header-contact">
+                <div class="header-contact-item"><i class="fas fa-phone header-contact-icon"></i><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></div>
+                <div class="header-contact-item"><i class="fas fa-envelope header-contact-icon"></i><a href="mailto:info@wvtsol.com">info@wvtsol.com</a></div>
+            </div>
+            <div class="mobile-toggle" id="mobile-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </div>
+</header>
+
+<section class="service-hero">
+    <div class="container service-hero-content">
+        <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right" style="font-size:0.7rem"></i><span>Consultancy &amp; Support</span></div>
+        <div class="service-hero-badge"><i class="fas fa-headset"></i> Service</div>
+        <h1>IT Consultancy &amp; Support Services</h1>
+        <p>Expert guidance and ongoing support to optimise your technology infrastructure and business processes</p>
+        <a href="#booking" class="btn">Get Expert Support</a>
+    </div>
+</section>
+
+<section class="service-detail">
+    <div class="container">
+        <div class="service-detail-content">
+            <div class="service-info reveal">
+                <h2>Strategic Technology Consulting</h2>
+                <p>In today's rapidly evolving digital landscape, having the right technology strategy is crucial for business success. Our consultancy services provide expert guidance to help you make informed decisions about your technology investments and digital transformation initiatives.</p>
+                <p>We work closely with you to understand your business objectives, challenges, and opportunities, then develop tailored technology roadmaps that align with your goals and drive growth.</p>
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="feature-text"><h4>Technology Assessment</h4><p>Comprehensive analysis of your current technology stack and infrastructure</p></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-road"></i></div>
+                        <div class="feature-text"><h4>Strategic Planning</h4><p>Develop technology roadmaps aligned with your business objectives</p></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="feature-text"><h4>Security Audits</h4><p>Identify vulnerabilities and implement robust security measures</p></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="feature-text"><h4>Process Optimisation</h4><p>Streamline workflows and improve operational efficiency</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-image reveal">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Consultancy and Support">
+            </div>
+        </div>
+
+        <!-- Support Tiers -->
+        <div class="support-tiers">
+            <div class="section-title reveal">
+                <h2>Our Support Plans</h2>
+                <p>Choose the level of support that best fits your business needs</p>
+            </div>
+            <div class="tiers-container">
+                <div class="tier-card reveal">
+                    <div class="tier-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="tier-title">Basic Support</h3>
+                    <div class="tier-price">₹15,000<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li class="tier-feature"><i class="fas fa-check"></i> 8×5 Email Support</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Monthly System Health Check</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Basic Troubleshooting</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Software Updates</li>
+                        <li class="tier-feature"><i class="fas fa-times"></i> Emergency Support</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Get Started</a>
+                </div>
+                <div class="tier-card popular reveal">
+                    <div class="tier-icon"><i class="fas fa-star"></i></div>
+                    <h3 class="tier-title">Professional Support</h3>
+                    <div class="tier-price">₹35,000<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li class="tier-feature"><i class="fas fa-check"></i> 24×5 Phone &amp; Email Support</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Weekly System Monitoring</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Advanced Troubleshooting</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Proactive Maintenance</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Emergency Support (8×5)</li>
+                    </ul>
+                    <a href="#booking" class="btn">Get Started</a>
+                </div>
+                <div class="tier-card reveal">
+                    <div class="tier-icon"><i class="fas fa-gem"></i></div>
+                    <h3 class="tier-title">Enterprise Support</h3>
+                    <div class="tier-price">₹65,000<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li class="tier-feature"><i class="fas fa-check"></i> 24×7 Dedicated Support</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Real-time System Monitoring</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> On-site Assistance</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Strategic IT Guidance</li>
+                        <li class="tier-feature"><i class="fas fa-check"></i> Emergency Support (24×7)</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process -->
+        <div class="process-section" style="margin-top:70px;">
+            <div class="section-title reveal">
+                <h2>Our Consultancy Process</h2>
+                <p>A structured approach to addressing your technology challenges</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Discovery &amp; Analysis</h3>
+                    <p class="step-desc">We begin by thoroughly understanding your business, challenges, and objectives through detailed discussions.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Assessment &amp; Planning</h3>
+                    <p class="step-desc">We evaluate your current technology stack and develop a strategic plan aligned with your business goals.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Implementation Support</h3>
+                    <p class="step-desc">We guide you through the implementation process, ensuring smooth adoption of new technologies.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Ongoing Optimisation</h3>
+                    <p class="step-desc">We provide continuous support and recommendations to optimise your technology investments over time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section" id="booking">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Get Expert Consultation</h2>
+            <p>Let's discuss how we can support your business technology needs</p>
+        </div>
+        <div class="booking-container">
+            <div class="booking-info reveal">
+                <h2>Why Choose Our Consultancy?</h2>
+                <p>Our team of experienced technology consultants brings deep expertise across various industries and technologies. We focus on delivering practical, actionable advice that drives real business results.</p>
+                <div class="benefits-list">
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Industry-experienced consultants</span></div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Customised solutions for your business</span></div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Proven methodologies and frameworks</span></div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Ongoing support and guidance</span></div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Cost-effective technology recommendations</span></div>
+                    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Vendor-agnostic advice</span></div>
+                </div>
+            </div>
+            <div class="booking-form reveal">
+                <h3>Request a Consultation</h3>
+                <p class="form-subtitle">We'll get back to you within one business day.</p>
+                <form id="bookingForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Your Name *</label>
+                            <input type="text" id="name" name="from_name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="from_phone" class="form-control" placeholder="+91 00000 00000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Email *</label>
+                        <input type="email" id="email" name="from_email" class="form-control" placeholder="you@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Interest Level</label>
+                        <select id="support-level" name="support_level" class="form-control">
+                            <option value="">Select an option</option>
+                            <option value="consultancy">Technology Consultancy</option>
+                            <option value="basic">Basic Support Plan</option>
+                            <option value="professional">Professional Support Plan</option>
+                            <option value="enterprise">Enterprise Support Plan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How can we help? *</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Tell us about your technology challenges or requirements" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <span class="btn-text">Request Consultation &nbsp;<i class="fas fa-paper-plane"></i></span>
+                        <span class="btn-loading"><span class="spinner"></span> Sending…</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="/res/logo.png" alt="WVTSOL" style="height:36px;margin-bottom:18px;filter:brightness(0) invert(1);">
+                <p>We engineer smart tech solutions that drive your business forward. Your trusted technology partner for innovation and growth.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h3>Services</h3><ul class="footer-links"><li><a href="/services/web-development">Web Development</a></li><li><a href="/services/consultancy-and-support">Consultancy &amp; Support</a></li><li><a href="/services/digital-marketing">Digital Marketing</a></li><li><a href="/services/software-development">Software Development</a></li></ul></div>
+            <div class="footer-col"><h3>Quick Links</h3><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/#services">Services</a></li><li><a href="/#about">About Us</a></li><li><a href="/#contact">Contact Us</a></li></ul></div>
+            <div class="footer-col"><h3>Contact Info</h3><ul class="footer-links"><li><i class="fas fa-phone" style="color:var(--secondary);margin-right:7px;width:14px"></i>+91 XXXXX XXXXX</li><li><i class="fas fa-envelope" style="color:var(--secondary);margin-right:7px;width:14px"></i>info@wvtsol.com</li><li><i class="fas fa-map-marker-alt" style="color:var(--secondary);margin-right:7px;width:14px"></i>123 Tech Park, Bangalore</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>Copyright &copy; 2025 WVTSOL — All Rights Reserved.</p></div>
+    </div>
+</footer>
+<div id="toast" class="toast"></div>
+
+<script>
+    const EMAILJS_SERVICE_ID = 'service_bszf8vm', EMAILJS_TEMPLATE_ID = 'template_u5tahuo';
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+    const mobileToggle = document.getElementById('mobile-toggle'), navList = document.getElementById('nav-list');
+    mobileToggle.addEventListener('click', () => { const open = navList.classList.toggle('active'); mobileToggle.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars'; });
+    navList.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => { navList.classList.remove('active'); mobileToggle.querySelector('i').className = 'fas fa-bars'; }));
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const id = a.getAttribute('href'); if (id === '#') return; const el = document.querySelector(id); if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - 74, behavior: 'smooth' }); } }); });
+    const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -35px 0px' });
+    document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 5) * 0.07}s`; revealObs.observe(el); });
+    function showToast(msg, type = 'success') { const t = document.getElementById('toast'); t.innerHTML = `<i class="fas ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i><span>${msg}</span>`; t.className = `toast show ${type}`; clearTimeout(t._t); t._t = setTimeout(() => { t.className = 'toast'; }, 4800); }
+    function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    const bookingForm = document.getElementById('bookingForm'), submitBtn = bookingForm.querySelector('.btn-submit');
+    bookingForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim(), email = document.getElementById('email').value.trim(),
+              phone = document.getElementById('phone').value.trim(), company = document.getElementById('company').value.trim(),
+              supportLevel = document.getElementById('support-level').value, message = document.getElementById('message').value.trim();
+        if (!name || !email || !message) { showToast('Please fill in all required fields.', 'error'); return; }
+        if (!isValidEmail(email)) { showToast('Please enter a valid email address.', 'error'); return; }
+        submitBtn.classList.add('loading'); submitBtn.disabled = true;
+        try {
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { from_name: name, from_email: email, from_phone: phone || 'Not provided', company: company || 'Not provided', support_level: supportLevel || 'Not specified', message, to_name: 'WVTSOL Team', service_type: 'Consultancy & Support' });
+            showToast("Request sent! We'll be in touch within 24 hours.", 'success'); bookingForm.reset();
+        } catch (err) { console.error(err); showToast('Something went wrong. Please try again.', 'error'); }
+        finally { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+    });
+</script>
+</body>
+</html>
