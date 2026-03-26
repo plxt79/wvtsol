@@ -393,12 +393,13 @@
             <div class="footer-col"><h3>Quick Links</h3><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/#services">Services</a></li><li><a href="/#about">About Us</a></li><li><a href="/#contact">Contact Us</a></li></ul></div>
             <div class="footer-col"><h3>Contact Info</h3><ul class="footer-links"><li><i class="fas fa-phone" style="color:var(--secondary);margin-right:7px;width:14px"></i>+91 XXXXX XXXXX</li><li><i class="fas fa-envelope" style="color:var(--secondary);margin-right:7px;width:14px"></i>info@wvtsol.com</li><li><i class="fas fa-map-marker-alt" style="color:var(--secondary);margin-right:7px;width:14px"></i>123 Tech Park, Bangalore</li></ul></div>
         </div>
-        <div class="footer-bottom"><p>Copyright &copy; 2025 WVTSOL — All Rights Reserved.</p></div>
+        <div class="footer-bottom"><p>Copyright &copy; <span id="year"></span> WVTSOL - All Rights Reserved.</p></div>
     </div>
 </footer>
 <div id="toast" class="toast"></div>
 
 <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
     const EMAILJS_SERVICE_ID = 'service_bszf8vm', EMAILJS_TEMPLATE_ID = 'template_u5tahuo';
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
