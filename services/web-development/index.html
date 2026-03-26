@@ -364,13 +364,14 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom"><p>Copyright &copy; 2025 WVTSOL — All Rights Reserved.</p></div>
+        <div class="footer-bottom"><p>Copyright &copy; <span id="year"></span> WVTSOL - All Rights Reserved.</p></div>
     </div>
 </footer>
 
 <div id="toast" class="toast"></div>
 
 <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
     const EMAILJS_SERVICE_ID = 'service_bszf8vm';
     const EMAILJS_TEMPLATE_ID = 'template_u5tahuo';
 
